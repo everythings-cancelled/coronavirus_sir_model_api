@@ -47,6 +47,21 @@ describe Person do
                     expect(person.policy_price).to eq(117.0)
                 end
             end
+
+            context "test case 4" do
+                # with no medical condition
+                let(:person) do
+                    described_class.new(
+                        name: "Shaun",
+                        age: 20,
+                        gender: "male"
+                    )
+                end
+
+                it "returns 100.0" do
+                    expect(person.policy_price).to eq(100.0)
+                end
+            end
         end
     end
 end

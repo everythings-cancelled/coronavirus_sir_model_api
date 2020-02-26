@@ -4,7 +4,6 @@ class Person
     BASE_PRICE = 100
     MIN_AGE = 18
 
-    # todo: fix when there is no health condition factor
     HEALTH_CONDITION_FACTORS = {
         "allergies" => 1.01,
         "sleep apnea" => 1.06,

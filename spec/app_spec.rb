@@ -37,6 +37,24 @@ describe "App" do
                 expected_body = { "policy_prices" => [{ "name" => "Kelly", "policy_price" => "foo" }, { "name" => "Josh", "policy_price" => "foo" }] }
                 expect(JSON.parse(last_response.body)).to eq(expected_body)
             end
+
+            context "when the health condition and gender have mixed capitalization" do
+                let(:person_json) do
+                    {
+                        "name" => "Kelly",
+                        "gender" => "fEmAlE",
+                        "age" => 50,
+                        "health condition" => "aLlErGiEs"
+                    }
+                end
+
+                let(:body) { { people: [person_json] }.to_json }
+                
+                it "creates a person with the health condition and gender all downcased" do
+                    expect(Person).to receive(:new).with(name: "Kelly", gender: "female", health_condition: "allergies", age: 50)
+                    post "/v1/policy_prices", body
+                end
+            end
         end
     end
 end

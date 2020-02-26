@@ -18,6 +18,20 @@ RSpec.configure do |config|
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
   config.expect_with :rspec do |expectations|
+    require "pry"
+    require "rack/test"
+
+    Dir[File.join(__dir__, "../*.rb")].each do |file|
+      require_relative file
+    end
+
+    module RSpecMixin
+      include Rack::Test::Methods
+      def app() Sinatra::Application end
+    end
+    
+    RSpec.configure { |c| c.include RSpecMixin }
+
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
     # defined using `chain`, e.g.:

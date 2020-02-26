@@ -10,7 +10,6 @@ end
 
 post '/v1/policy_prices' do
     people = @request_payload["people"].map do |person|
-        # todo: write specs for downcasing gender/health condition...?  and validate params?
         Person.new(
             gender: person["gender"].downcase,
             age: person["age"],

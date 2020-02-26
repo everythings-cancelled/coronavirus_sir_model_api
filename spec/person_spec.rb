@@ -85,7 +85,7 @@ describe Person do
 
         context "when the person is a female" do
             let(:gender) { "female" }
-            
+
             it "returns -12" do
                 expect(person.gender_factor).to eq(-12)
             end
@@ -93,18 +93,36 @@ describe Person do
     end
 
     context "#age_factor" do
+        let(:person) do
+            described_class.new(
+                name: "Jordan",
+                age: age,
+                gender: "male",
+                health_condition: "sleep apnea"
+            )
+        end
+
         context "when the person is 5 years older than the minimum age" do
+            let(:age) { 23 }
+
             it "returns 20" do
+                expect(person.age_factor).to eq(20)
             end
         end
 
         context "when the person is 6 years older than the minimum age" do
+            let(:age) { 24 }
+
             it "returns 20" do
+                expect(person.age_factor).to eq(20)
             end
         end
 
         context "when the person is 10 years older than the minimum age" do
+            let(:age) { 28 }
+
             it "returns 40" do
+                expect(person.age_factor).to eq(40)
             end
         end
     end

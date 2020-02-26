@@ -65,73 +65,79 @@ describe Person do
         end
     end
 
-    describe "#gender_factor" do
+    describe "adjusting for gender" do
         let(:person) do
             described_class.new(
                 name: "Jordan",
-                age: 40,
+                age: 18,
                 gender: gender,
-                health_condition: "sleep apnea"
             )
         end
 
         context "when the person is a male" do
             let(:gender) { "male" }
 
-            it "returns 0" do
-                expect(person.gender_factor).to eq(0)
+            it "subtracts nothing from the base price" do
+                expect(person.policy_price).to eq(100.0)
             end
         end
 
         context "when the person is a female" do
             let(:gender) { "female" }
 
-            it "returns -12" do
-                expect(person.gender_factor).to eq(-12)
+            it "subtracts 12 from the base price" do
+                expect(person.policy_price).to eq(88.0)
             end
         end
     end
 
-    context "#age_factor" do
+    context "adjusting for age" do
         let(:person) do
             described_class.new(
                 name: "Jordan",
                 age: age,
                 gender: "male",
-                health_condition: "sleep apnea"
             )
+        end
+
+        context "when the person is less than 5 years older than the minimum wage" do
+            let(:age) { 19 }
+
+            it "adds nothing to the base price" do
+                expect(person.policy_price).to eq(100)
+            end
         end
 
         context "when the person is 5 years older than the minimum age" do
             let(:age) { 23 }
 
-            it "returns 20" do
-                expect(person.age_factor).to eq(20)
+            it "adds 20 to the base price" do
+                expect(person.policy_price).to eq(120)
             end
         end
 
         context "when the person is 6 years older than the minimum age" do
             let(:age) { 24 }
 
-            it "returns 20" do
-                expect(person.age_factor).to eq(20)
+            it "adds 20 to the base price" do
+                expect(person.policy_price).to eq(120)
             end
         end
 
         context "when the person is 10 years older than the minimum age" do
             let(:age) { 28 }
 
-            it "returns 40" do
-                expect(person.age_factor).to eq(40)
+            it "adds 40 to the base price" do
+                expect(person.policy_price).to eq(140)
             end
         end
     end
 
-    context "#health_condition_factor" do
+    context "adjusting for health conditions" do
         let(:person) do
             described_class.new(
                 name: "Jordan",
-                age: 25,
+                age: 18,
                 gender: "male",
                 health_condition: health_condition
             )
@@ -140,32 +146,32 @@ describe Person do
         context "when the person has allergies" do
             let(:health_condition) { "allergies" }
 
-            it "returns 1.01" do
-                expect(person.health_condition_factor).to eq(1.01)
+            it "increases the base price by 1%" do
+                expect(person.policy_price).to eq(101)
             end
         end
 
         context "when the person has sleep apnea" do
             let(:health_condition) { "sleep apnea" }
 
-            it "returns 1.06" do
-                expect(person.health_condition_factor).to eq(1.06)
+            it "increases the base price by 6%" do
+                expect(person.policy_price).to eq(106)
             end
         end
 
         context "when the person has heart disease" do
             let(:health_condition) { "heart disease" }
 
-            it "returns 1.17" do
-                expect(person.health_condition_factor).to eq(1.17)
+            it "increases the base price by 17%" do
+                expect(person.policy_price).to eq(117)
             end
         end
 
         context "when the person has no health conditions" do
             let(:health_condition) { nil }
 
-            it "returns 1" do
-                expect(person.health_condition_factor).to eq(1)
+            it "does not increase the base price" do
+                expect(person.policy_price).to eq(100)
             end
         end
     end

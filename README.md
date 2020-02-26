@@ -54,10 +54,10 @@ You can access the application online by sending POST requests `POST` requests t
 To run the application locally, simply:
 - Unzip the package
 - Make sure you have the dependencies outlined in `DEPENDENCIES.md`.
-- In the `tickle_api` directory, run `bundle install`
+- In the project directory, run `bundle install`
 - Run `ruby app.rb` to load up a local server.  You can make `POST` requests to that server's `v1/policy_prices` endpoint.
 
-To run the tests, simply run `rspec` in the `tickle_api` directory.
+To run the tests, simply run `rspec` in the project directory.
 
 You should in turn get a response in the following format:
 

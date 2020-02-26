@@ -94,3 +94,5 @@ In the instructions, you all recommended using a vanilla language, and not a fra
 - In the Google Doc provided, you all say "it should be easily extensible should the format change (or new formats be added) in the future.".  As you can see, I namespaced my `policy_prices` endpoint, prefixing it with `v1`.  If we want to drastically extend our inputting/outputting formats, we can just create a new endpoint (e.g. `v2/policy_prices`).
 
 I figured that using something like Rails would probably be overkill.  But Sinatra is very lightweight and doesn't require nearly as much overhaul.  And for the reasons I described, I think it's the best design choice.
+
+In my Sinatra app, I didn't add any parameter validations.  This is something that I would totally do in production code!  If I was using Rails, I would probably use strong params (https://edgeapi.rubyonrails.org/classes/ActionController/StrongParameters.html).  Since there was a time limit to this, I didn't want to spend too much extra time writing tests for valid params/implementing valid params/etc.

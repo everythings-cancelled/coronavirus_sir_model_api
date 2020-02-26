@@ -64,4 +64,55 @@ describe Person do
             end
         end
     end
+
+    describe "#gender_factor" do
+        context "when the person is a male" do
+            it "returns 0" do
+            end
+        end
+
+        context "when the person is a female" do
+            it "returns -12" do
+            end
+        end
+    end
+
+    context "#age_factor" do
+        context "when the person is 5 years older than the minimum age" do
+            it "returns 20" do
+            end
+        end
+
+        context "when the person is 6 years older than the minimum age" do
+            it "returns 20" do
+            end
+        end
+
+        context "when the person is 10 years older than the minimum age" do
+            it "returns 40" do
+            end
+        end
+    end
+
+    context "#health_condition_factor" do
+        context "when the person has allergies" do
+            it "returns 1.01" do
+            end
+        end
+
+        context "when the person has sleep apnea" do
+            it "returns 1.06" do
+            end
+        end
+
+        context "when the person has heart disease" do
+            it "returns 1.17" do
+            end
+        end
+
+        context "when the person has no health conditions" do
+            it "returns 1" do
+            end
+        end
+    end
 end

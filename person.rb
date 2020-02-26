@@ -23,8 +23,6 @@ class Person
         (BASE_PRICE + age_factor)*health_condition_factor + gender_factor
     end
 
-    private
-
     def gender_factor
         gender == GENDER_FEMALE ? -12 : 0
     end

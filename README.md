@@ -1,4 +1,4 @@
-Shaun Carland
+### Shaun Carland
 
 This is my solution for the Policy Genius take home assignment! :)
 
@@ -29,10 +29,8 @@ I implemented a simple Sinatra application that has a `v1/policy_prices` endpoin
 	]
 }
 ```
+You can access the application online by sending POST requests `POST` requests to `https://tickle-api.herokuapp.com/v1/policy_prices`.  You should get a response in the following format:
 
-To run the application, simply type `ruby app.rb` in the directory.  You can then make `POST` requests to the local server's `v1/policy_prices` endpoint that is fired up.  To run all of the tests, type `rspec`.  You can also access the API by sending `POST` requests to `https://tickle-api.herokuapp.com/v1/policy_prices`.
-
-You should in turn get a response in the following format:
 
 ```
 {
@@ -53,7 +51,18 @@ You should in turn get a response in the following format:
 }
 ```
 
-Some notes:
+To run the application locally, simply:
+- Unzip the package
+- Make sure you have the dependencies outlined in `DEPENDENCIES.md`.
+- In the `tickle_api` directory, run `bundle install`
+- Run `ruby app.rb` to load up a local server.  You can make `POST` requests to that server's `v1/policy_prices` endpoint.
+
+To run the tests, simply run `rspec` in the `tickle_api` directory.
+
+You should in turn get a response in the following format:
+
+###Some notes:
+
 For the Person specs, you can see that I wrote tests testing all of the cases that were provided in the Google Doc.  However, I also wrote tests to see how each of the factors (e.g. age, gender, health condition) impacted the base price.  I was happy that my tests were passing for the test cases provided.  However, I wanted to have a more robust test suite to make sure that each factor was working independently.
 
 In my first stab at this, I made all of the factor methods public so I could test them in the following format:
@@ -96,3 +105,7 @@ In the instructions, you all recommended using a vanilla language, and not a fra
 I figured that using something like Rails would probably be overkill.  But Sinatra is very lightweight and doesn't require nearly as much overhaul.  And for the reasons I described, I think it's the best design choice.
 
 In my Sinatra app, I didn't add any parameter validations.  This is something that I would totally do in production code!  If I was using Rails, I would probably use strong params (https://edgeapi.rubyonrails.org/classes/ActionController/StrongParameters.html).  Since there was a time limit to this, I didn't want to spend too much extra time writing tests for valid params/implementing valid params/etc.
+
+
+
+https://docs.google.com/document/d/1ASI8PFrQ7kB1cizLsf3aTf4hoN-9T7JBdjdqOK4jwbU/edit

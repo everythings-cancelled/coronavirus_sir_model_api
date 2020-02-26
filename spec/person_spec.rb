@@ -128,23 +128,44 @@ describe Person do
     end
 
     context "#health_condition_factor" do
+        let(:person) do
+            described_class.new(
+                name: "Jordan",
+                age: 25,
+                gender: "male",
+                health_condition: health_condition
+            )
+        end
+        
         context "when the person has allergies" do
+            let(:health_condition) { "allergies" }
+
             it "returns 1.01" do
+                expect(person.health_condition_factor).to eq(1.01)
             end
         end
 
         context "when the person has sleep apnea" do
+            let(:health_condition) { "sleep apnea" }
+
             it "returns 1.06" do
+                expect(person.health_condition_factor).to eq(1.06)
             end
         end
 
         context "when the person has heart disease" do
+            let(:health_condition) { "heart disease" }
+
             it "returns 1.17" do
+                expect(person.health_condition_factor).to eq(1.17)
             end
         end
 
         context "when the person has no health conditions" do
+            let(:health_condition) { nil }
+
             it "returns 1" do
+                expect(person.health_condition_factor).to eq(1)
             end
         end
     end

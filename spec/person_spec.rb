@@ -66,13 +66,28 @@ describe Person do
     end
 
     describe "#gender_factor" do
+        let(:person) do
+            described_class.new(
+                name: "Jordan",
+                age: 40,
+                gender: gender,
+                health_condition: "sleep apnea"
+            )
+        end
+
         context "when the person is a male" do
+            let(:gender) { "male" }
+
             it "returns 0" do
+                expect(person.gender_factor).to eq(0)
             end
         end
 
         context "when the person is a female" do
+            let(:gender) { "female" }
+            
             it "returns -12" do
+                expect(person.gender_factor).to eq(-12)
             end
         end
     end

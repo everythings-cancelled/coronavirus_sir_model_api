@@ -19,6 +19,7 @@ RSpec.configure do |config|
   # assertions if you prefer.
   config.expect_with :rspec do |expectations|
     require "pry"
+    require "sir_model"
     require "rack/test"
 
     Dir[File.join(__dir__, "../*.rb")].each do |file|

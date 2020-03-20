@@ -5,6 +5,9 @@ require "pry"
 
 get "/v1/sir_model" do
     sir_model_api_adapter = SirModelApiAdapter.new
+    # todo: get the population of the country
+    # get its infected and resistant rates from adapter
+    # plug all of those values into the model
 
     # todo: paramaterize it
     sir_model_api_adapter.build_model(

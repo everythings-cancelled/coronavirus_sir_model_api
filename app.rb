@@ -39,7 +39,7 @@ post "/v1/sir_model" do
         country: params["country"], 
         population: country.population, 
         points: model.results,
-        hospital_beds_per_10000_people: who_api_adapter.hospital_beds_per_10000_people
+        hospitalBedsPer10000People: who_api_adapter.hospital_beds_per_10000_people
     }.to_json
 end
 
@@ -67,6 +67,6 @@ get "/v1/sir_model" do
         country: params["country"], 
         population: country.population, 
         points: model.results,
-        hospital_beds_per_10000_people: who_api_adapter.hospital_beds_per_10000_people
+        hospitalBedsPer10000People: who_api_adapter.hospital_beds_per_10000_people
     }.to_json
 end

@@ -3,7 +3,7 @@ This is an API that builds a Susceptible-Infected-Recovered (SIR) model from Cor
 
 The SIR model is one of the simplest compartmental models, and many models are derivations of this basic form.  The model consists of three compartments: S for the number of susceptible people in a population, I for the number of infectious people in a population, and R for the number resillient people (either dead or recovered in a population).  The model represents the number of people in each compartment for an abstract unit of time (called an eon).
 
-For more information: https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SIR_model_is_dynamic_in_three_senses 
+For more information: https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SIR_model_is_dynamic_in_three_senses
 
 ### Endpoints
 We are maintaining the following endpoints:

@@ -1,11 +1,16 @@
 require 'sinatra'
 require "sinatra/reloader"
 require_relative "sir_model_api_adapter"
+require_relative "rest_countries_api_adapter"
 require "pry"
 
 get "/v1/sir_model" do
     sir_model_api_adapter = SirModelApiAdapter.new
-    # todo: get the population of the country
+
+    # todo: make this a constant
+    rest_countries_api_adapter = RestCountriesApiAdapter.new("https://restcountries.eu/rest/v2/name/")
+    rest_countries_api_adapter.country_population("Aruba")
+
     # get its infected and resistant rates from adapter
     # plug all of those values into the model
 

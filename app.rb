@@ -14,7 +14,7 @@ get "/v1/sir_model" do
     susceptible = rest_countries_api_adapter.country_population - resistant - coronavirus_tracker_api_adapter.confirmed
 
     model = sir_model_api_adapter.build_model(
-        eons: 5,
+        eons: 3000,
         infected: coronavirus_tracker_api_adapter.confirmed,
         susceptible: susceptible,
         resistant: resistant,

@@ -1,5 +1,3 @@
-WIP PLZ DONT LOOK LOL
-
 ## Coronavirus SIR Model API
 This is an API that builds a Susceptible-Infected-Recovered (SIR) model from Coronavirus Data.
 

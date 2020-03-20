@@ -51,7 +51,7 @@ DEPENDENCIES
   rack-test
   sinatra (= 2.0.7)
   sinatra-contrib (= 2.0.7)
-  sir_model (= 0.1.5)
+  sir_model
 
 BUNDLED WITH
    2.1.4

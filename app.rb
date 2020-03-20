@@ -3,21 +3,12 @@ require "sinatra/reloader"
 require "pry"
 require "sir_model"
 
-require_relative "rest_countries_api_adapter"
-require_relative "coronavirus_tracker_api_adapter"
 require_relative "who_api_adapter"
+require_relative "country_adapter"
+require_relative "coronavirus_adapter"
 
 require_relative "country"
-require_relative "country_adapter"
-
-require_relative "coronavirus_adapter"
 require_relative "coronavirus"
-
-# coronavirus_tracker_api_adapter = CoronavirusTrackerApiAdapter.new("https://coronavirus-tracker-api.herokuapp.com/v2/", country.alpha_2_code)
-
-# resistant = coronavirus_tracker_api_adapter.recovered + coronavirus_tracker_api_adapter.deaths
-# susceptible = country.population - resistant - coronavirus_tracker_api_adapter.confirmed
-
 
 get "/v2/sir_model" do
     # temp default values
@@ -31,7 +22,6 @@ get "/v2/sir_model" do
     coronavirus = Coronavirus.new(coronavirus_adapter)
 
     who_api_adapter = WhoApiAdapter.new(country.alpha_3_code)
-
 
     model = SirModel.new(
         eons: params["eons"].to_i,

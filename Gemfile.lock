@@ -38,6 +38,7 @@ GEM
       rack-protection (= 2.0.7)
       sinatra (= 2.0.7)
       tilt (~> 2.0)
+    sir_model (0.1.5)
     tilt (2.0.10)
 
 PLATFORMS
@@ -50,6 +51,7 @@ DEPENDENCIES
   rack-test
   sinatra (= 2.0.7)
   sinatra-contrib (= 2.0.7)
+  sir_model
 
 BUNDLED WITH
    2.1.4

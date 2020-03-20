@@ -2,12 +2,10 @@ require 'sinatra'
 require "sinatra/reloader"
 require "pry"
 require "sir_model"
+require "restcountry"
 
 require_relative "who_api_adapter"
-require_relative "country_adapter"
 require_relative "coronavirus_adapter"
-
-require_relative "country"
 require_relative "coronavirus"
 
 
@@ -15,14 +13,12 @@ require_relative "coronavirus"
 post "/v1/sir_model" do
     request.body.rewind
     params = JSON.parse(request.body.read)
+    country = Restcountry::Country.find_by_name(params["country"])
 
-    country_adapter = CountryAdapter.new(params["country"])
-    country = Country.new(country_adapter)
-
-    coronavirus_adapter = CoronavirusAdapter.new(country.alpha_2_code)
+    coronavirus_adapter = CoronavirusAdapter.new(country.alpha2Code)
     coronavirus = Coronavirus.new(coronavirus_adapter)
 
-    who_api_adapter = WhoApiAdapter.new(country.alpha_3_code)
+    who_api_adapter = WhoApiAdapter.new(country.alpha3Code)
 
     model = SirModel.new(
         eons: params["eons"].to_i,

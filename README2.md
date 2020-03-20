@@ -41,3 +41,9 @@ The endpoint returns data in the following format:
     ]
   }
 ```
+
+Where:
+- `country` is the name of the country
+- `population` is the country's population, according to `https://restcountries.eu/`
+- `hospitalBedsPer10000People` is the ratio of hospital beds per 10,000 people, according to the World Health Organization
+- `points` is an array containing JSON formatted points of the model's simulation.  Specifically, each point indicates the number of `susceptible`, `infected`, and `resistant` individuals in a population on a given `eon`.

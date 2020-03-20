@@ -6,13 +6,14 @@ require "pry"
 require "sir_model"
 
 get "/v1/sir_model" do
+    binding.pry
+
     rest_countries_api_adapter = RestCountriesApiAdapter.new("https://restcountries.eu/rest/v2/name/", params["country"])
     coronavirus_tracker_api_adapter = CoronavirusTrackerApiAdapter.new("https://coronavirus-tracker-api.herokuapp.com/v2/", rest_countries_api_adapter.country_code)
 
     resistant = coronavirus_tracker_api_adapter.recovered + coronavirus_tracker_api_adapter.deaths
     susceptible = rest_countries_api_adapter.country_population - resistant - coronavirus_tracker_api_adapter.confirmed
 
-    binding.pry
     model = SirModel.new(
         eons: params["eons"].to_i,
         infected: coronavirus_tracker_api_adapter.confirmed,

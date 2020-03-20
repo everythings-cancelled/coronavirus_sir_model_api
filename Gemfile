@@ -6,4 +6,4 @@ gem "puma", "4.3.0"
 gem "pry"
 gem "rack-test"
 gem "httparty"
-gem 'sir_model', '~> 0.1.2'
+gem "sir_model", "0.1.5"

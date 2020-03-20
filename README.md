@@ -21,10 +21,10 @@ Posting to this endpoint will give you the results of a SIR model built off of a
 ```
 
 Where:
-- rateSi is the rate in which an individual goes from being susceptable to being infected
-- raterRi is the rate in which an individual goes from being infected to being resistant
-- eons is the length of the model simulation
-- country is the name of the country
+- `rateSi` is the rate in which an individual goes from being susceptable to being infected
+- `rateRi` is the rate in which an individual goes from being infected to being resistant
+- `eons` is the length of the model simulation
+- `country` is the name of the country
 
 The endpoint returns data in the following format:
 ```

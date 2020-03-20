@@ -4,6 +4,7 @@ Gems:
 - "sinatra" version version 2.0.7
 - "sinatra-contrib" verson 2.0.7
 - "puma" version 4.3.0
+- "sir_model" version 0.1.5
 - "rack-test"
 
 My Gemfile also includes `pry` but this is for testing.

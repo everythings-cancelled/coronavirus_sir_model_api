@@ -24,7 +24,10 @@ get "/v1/sir_model" do
     )   
 
     content_type :json
-    headers 'Access-Control-Allow-Origin' => 'http://localhost:3000'
+    # https://nifty-fermi-3c4ae9.netlify.com/
+    # todo: this is bad!  we want to whitelist, not just let everything in
+    # make sure to fix it l8r!
+    headers 'Access-Control-Allow-Origin' => '*'
     { country: params["country"], population: rest_countries_api_adapter.country_population, points: model["results"] }.to_json
 
 end

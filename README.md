@@ -1,7 +1,7 @@
 Not sure where to start?  Visit https://shauncar.land/projects/everythings-cancelled/ for more information on the *Everything's Cancelled* project.
 
 ## Coronavirus SIR Model API
-This is an API that builds a Susceptible-Infected-Recovered (SIR) model from Coronavirus Data.
+This is an API that builds a Susceptible-Infected-Recovered (SIR) model from Coronavirus Data.  You can access it at: `https://coronavirus-sir-model-api.herokuapp.com/v1/sir_model`.
 
 The SIR model is one of the simplest compartmental models, and many models are derivations of this basic form.  The model consists of three compartments: S for the number of susceptible people in a population, I for the number of infectious people in a population, and R for the number resillient people (either dead or recovered in a population).  The model represents the number of people in each compartment for an abstract unit of time (called an eon).
 

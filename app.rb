@@ -10,10 +10,11 @@ require_relative "coronavirus_adapter"
 require_relative "country"
 require_relative "coronavirus"
 
-get "/v2/sir_model" do
-    # temp default values
-    rate_si = params["rateSi"].nil? ? 0.05 : params["rateSi"].to_f
-    rate_ri = params["rateRi"].nil? ? 0.01 : params["rateRi"].to_f
+
+# todo: add param validations
+post "/v1/sir_model" do
+    request.body.rewind
+    params = JSON.parse(request.body.read)
 
     country_adapter = CountryAdapter.new(params["country"])
     country = Country.new(country_adapter)
@@ -28,20 +29,18 @@ get "/v2/sir_model" do
         infected: coronavirus.infected,
         susceptible: country.population - coronavirus.non_susceptible,
         resistant: coronavirus.resistant,
-        rate_si: rate_si,
-        rate_ir: rate_ri,
+        rate_si: params["rateSi"].to_f,
+        rate_ir: params["rateiR"].to_f,
         population: country.population
     )
 
     content_type :json
-
     { 
         country: params["country"], 
         population: country.population, 
         points: model["results"],
         hospital_beds_per_10000_people: who_api_adapter.hospital_beds_per_10000_people
     }.to_json
-
 end
 
 get "/v1/sir_model" do

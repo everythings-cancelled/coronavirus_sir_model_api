@@ -35,12 +35,17 @@ post "/v1/sir_model" do
     )
 
     content_type :json
+
+    # todo: this is bad!  only for development now, we dont want this in a final prod app
+    headers 'Access-Control-Allow-Origin' => 'http://localhost:3000'
+
     { 
         country: params["country"], 
         population: country.population, 
         points: model.results,
         hospitalBedsPer10000People: who_api_adapter.hospital_beds_per_10000_people
     }.to_json
+    
 end
 
 get "/v1/sir_model" do
@@ -61,6 +66,9 @@ get "/v1/sir_model" do
         rate_ir: params["rateiR"].to_f,
         population: country.population
     )
+
+    # todo: this is bad!  only for development now, we dont want this in a final prod app
+    headers 'Access-Control-Allow-Origin' => 'http://localhost:3000'
 
     content_type :json
     { 

@@ -30,7 +30,7 @@ post "/v1/sir_model" do
         susceptible: country.population - coronavirus.non_susceptible,
         resistant: coronavirus.resistant,
         rate_si: params["rateSi"].to_f,
-        rate_ir: params["rateiR"].to_f,
+        rate_ir: params["rateRi"].to_f,
         population: country.population
     )
 

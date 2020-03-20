@@ -14,7 +14,7 @@ get "/v1/sir_model" do
     susceptible = rest_countries_api_adapter.country_population - resistant - coronavirus_tracker_api_adapter.confirmed
 
     model = sir_model_api_adapter.build_model(
-        eons: 3000,
+        eons: params["eons"].to_i,
         infected: coronavirus_tracker_api_adapter.confirmed,
         susceptible: susceptible,
         resistant: resistant,
@@ -24,6 +24,7 @@ get "/v1/sir_model" do
     )   
 
     content_type :json
+    headers 'Access-Control-Allow-Origin' => 'http://localhost:3000'
     { country: params["country"], population: rest_countries_api_adapter.country_population, points: model["results"] }.to_json
 
 end

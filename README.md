@@ -1,3 +1,5 @@
+Not sure where to start?  Visit https://shauncar.land/projects/everythings-cancelled/ for more information on the *Everything's Cancelled* project.
+
 ## Coronavirus SIR Model API
 This is an API that builds a Susceptible-Infected-Recovered (SIR) model from Coronavirus Data.
 

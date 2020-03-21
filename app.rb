@@ -3,6 +3,7 @@ require "sinatra/reloader"
 require "pry"
 require "sir_model"
 require "restcountry"
+require 'pomber_covid19'
 
 require_relative "who_api_adapter"
 require_relative "coronavirus_adapter"
@@ -14,11 +15,8 @@ post "/v1/sir_model" do
     request.body.rewind
     params = JSON.parse(request.body.read)
     country = Restcountry::Country.find_by_name(params["country"])
-
-    coronavirus_adapter = CoronavirusAdapter.new(country.alpha2Code)
-    coronavirus = Coronavirus.new(coronavirus_adapter)
-
     who_api_adapter = WhoApiAdapter.new(country.alpha3Code)
+    covid19_latest_data = PomberCovid19.find_by_region_name(params["country"].capitalize).first
 
     model = SirModel.new(
         eons: params["eons"].to_i,

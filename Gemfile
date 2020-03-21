@@ -8,3 +8,4 @@ gem "rack-test"
 gem "httparty"
 gem "sir_model"
 gem "restcountry"
+gem 'pomber_covid19'

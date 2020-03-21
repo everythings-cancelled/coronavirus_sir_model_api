@@ -18,11 +18,16 @@ post "/v1/sir_model" do
     who_api_adapter = WhoApiAdapter.new(country.alpha3Code)
     covid19_latest_data = PomberCovid19.find_by_region_name(params["country"].capitalize).last
 
+    resistant = covid19_latest_data["recovered"] + covid19_latest_data["deaths"]
+    non_susceptible = resistant - covid19_latest_data["confirmed"]
+
+    # binding.pry
+    # resistant - adapter.confirmed
     model = SirModel.new(
         eons: params["eons"].to_i,
-        infected: coronavirus.infected,
-        susceptible: country.population - coronavirus.non_susceptible,
-        resistant: coronavirus.resistant,
+        infected: covid19_latest_data["confirmed"],
+        susceptible: country.population - non_susceptible,
+        resistant: resistant,
         rate_si: params["rateSi"].to_f,
         rate_ir: params["rateRi"].to_f,
         population: country.population

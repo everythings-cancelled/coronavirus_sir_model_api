@@ -16,7 +16,7 @@ post "/v1/sir_model" do
     params = JSON.parse(request.body.read)
     country = Restcountry::Country.find_by_name(params["country"])
     who_api_adapter = WhoApiAdapter.new(country.alpha3Code)
-    covid19_latest_data = PomberCovid19.find_by_region_name(params["country"].capitalize).last
+    covid19_latest_data = PomberCovid19.find_by_region_name(params["country"]).last
 
     resistant = covid19_latest_data["recovered"] + covid19_latest_data["deaths"]
     non_susceptible = resistant - covid19_latest_data["confirmed"]

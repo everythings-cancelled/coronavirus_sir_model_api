@@ -21,8 +21,6 @@ post "/v1/sir_model" do
     resistant = covid19_latest_data["recovered"] + covid19_latest_data["deaths"]
     non_susceptible = resistant - covid19_latest_data["confirmed"]
 
-    # binding.pry
-    # resistant - adapter.confirmed
     model = SirModel.new(
         eons: params["eons"].to_i,
         infected: covid19_latest_data["confirmed"],
@@ -38,38 +36,6 @@ post "/v1/sir_model" do
     # todo: this is bad!  only for development now, we dont want this in a final prod app
     headers 'Access-Control-Allow-Origin' => '*'
 
-    { 
-        country: params["country"], 
-        population: country.population, 
-        points: model.results,
-        hospitalBedsPer10000People: who_api_adapter.hospital_beds_per_10000_people
-    }.to_json
-    
-end
-
-get "/v1/sir_model" do
-    country_adapter = CountryAdapter.new(params["country"])
-    country = Country.new(country_adapter)
-
-    coronavirus_adapter = CoronavirusAdapter.new(country.alpha_2_code)
-    coronavirus = Coronavirus.new(coronavirus_adapter)
-
-    who_api_adapter = WhoApiAdapter.new(country.alpha_3_code)
-
-    model = SirModel.new(
-        eons: params["eons"].to_i,
-        infected: coronavirus.infected,
-        susceptible: country.population - coronavirus.non_susceptible,
-        resistant: coronavirus.resistant,
-        rate_si: params["rateSi"].to_f,
-        rate_ir: params["rateiR"].to_f,
-        population: country.population
-    )
-
-    # todo: this is bad!  only for development now, we dont want this in a final prod app
-    headers 'Access-Control-Allow-Origin' => 'http://localhost:3000'
-
-    content_type :json
     { 
         country: params["country"], 
         population: country.population, 

@@ -31,7 +31,7 @@ post "/v1/sir_model" do
     content_type :json
 
     # todo: this is bad!  only for development now, we dont want this in a final prod app
-    # headers 'Access-Control-Allow-Origin' => '*'
+    headers 'Access-Control-Allow-Origin' => '*'
 
     { 
         country: params["country"], 

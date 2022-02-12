@@ -18,13 +18,13 @@ GEM
     multipart-post (2.1.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
-    nio4r (2.5.2)
+    nio4r (2.5.8)
     pomber_covid19 (0.1.3)
       httparty (~> 0.18.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    puma (4.3.0)
+    puma (4.3.11)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-protection (2.0.7)
@@ -57,7 +57,7 @@ DEPENDENCIES
   httparty
   pomber_covid19 (= 0.1.3)
   pry
-  puma (= 4.3.0)
+  puma (= 4.3.11)
   rack-test
   restcountry
   sinatra (= 2.0.7)
